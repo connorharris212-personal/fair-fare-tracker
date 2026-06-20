@@ -14,7 +14,7 @@ export const config = {
 
   // Email (Resend). With no key/recipient, alerts print to the console (dry run).
   resendApiKey: process.env.RESEND_API_KEY ?? "",
-  alertFrom: process.env.ALERT_FROM ?? "onboarding@resend.dev",
+  alertFrom: process.env.ALERT_FROM || "onboarding@resend.dev",
   alertTo: process.env.ALERT_TO ?? "",
 
   // Alert tuning.

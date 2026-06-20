@@ -1,0 +1,48 @@
+name: Fare check
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # every 6 hours (UTC). GitHub may delay scheduled runs slightly.
+  workflow_dispatch: {} # adds a manual "Run workflow" button
+
+# Allow the job to commit updated price history back to the repo.
+permissions:
+  contents: write
+
+# Never let two runs overlap (they'd race on the commit-back).
+concurrency:
+  group: fare-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run fare check
+        env:
+          DUFFEL_API_KEY: ${{ secrets.DUFFEL_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERT_FROM: ${{ secrets.ALERT_FROM }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
+        run: npm run check
+
+      - name: Commit updated price history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/; then
+            echo "No price-history changes to commit."
+          else
+            git add data/
+            git commit -m "chore: update price history [skip ci]"
+            git push
+          fi
