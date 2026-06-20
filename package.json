@@ -1,0 +1,23 @@
+{
+  "name": "fair-fare-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal flight fare watcher: alerts on genuine price drops and links you out to book. No scraping, no in-app booking, no payment handling.",
+  "scripts": {
+    "check": "tsx src/check.ts",
+    "cli": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@duffel/api": "^4.27.0",
+    "dotenv": "^17.4.2",
+    "resend": "^6.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

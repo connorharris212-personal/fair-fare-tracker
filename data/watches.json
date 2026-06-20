@@ -1,0 +1,26 @@
+[
+  {
+    "id": "sample01",
+    "label": "Tokyo (fall, flexible)",
+    "origin": [
+      "SFO"
+    ],
+    "dest": [
+      "NRT",
+      "HND"
+    ],
+    "departWindow": {
+      "start": "2026-10-12",
+      "end": "2026-10-14"
+    },
+    "returnWindow": {
+      "start": "2026-10-24",
+      "end": "2026-10-26"
+    },
+    "pax": 1,
+    "cabin": "economy",
+    "targetPrice": 800,
+    "currency": "USD",
+    "createdAt": "2026-06-20T00:00:00.000Z"
+  }
+]
