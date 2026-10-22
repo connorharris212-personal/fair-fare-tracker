@@ -4750,5 +4750,16 @@
     "stops": 0,
     "source": "mock",
     "offerId": "mock-SFO-NRT-2026-10-10-0"
+  },
+  {
+    "watchId": "sample01",
+    "ts": "2026-10-22T16:32:54.036Z",
+    "price": 490,
+    "currency": "USD",
+    "carrier": "B6",
+    "fareBrand": "Basic",
+    "stops": 0,
+    "source": "mock",
+    "offerId": "mock-SFO-NRT-2026-10-10-0"
   }
 ]
